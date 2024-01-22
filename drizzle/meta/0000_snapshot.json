@@ -1,0 +1,165 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "id": "3009c5d9-9d05-4371-b5d0-bfd122752ea5",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "dids": {
+      "name": "dids",
+      "columns": {
+        "did": {
+          "name": "did",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "head": {
+          "name": "head",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "state": {
+          "name": "state",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": 0
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "post_langs": {
+      "name": "post_langs",
+      "columns": {
+        "did": {
+          "name": "did",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "rkey": {
+          "name": "rkey",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "lang": {
+          "name": "lang",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "post_langs_did_dids_did_fk": {
+          "name": "post_langs_did_dids_did_fk",
+          "tableFrom": "post_langs",
+          "tableTo": "dids",
+          "columnsFrom": [
+            "did"
+          ],
+          "columnsTo": [
+            "did"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "post_langs_did_rkey_posts_did_rkey_fk": {
+          "name": "post_langs_did_rkey_posts_did_rkey_fk",
+          "tableFrom": "post_langs",
+          "tableTo": "posts",
+          "columnsFrom": [
+            "did",
+            "rkey"
+          ],
+          "columnsTo": [
+            "did",
+            "rkey"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "post_langs_did_rkey_lang_pk": {
+          "columns": [
+            "did",
+            "lang",
+            "rkey"
+          ],
+          "name": "post_langs_did_rkey_lang_pk"
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "posts": {
+      "name": "posts",
+      "columns": {
+        "did": {
+          "name": "did",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "rkey": {
+          "name": "rkey",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "text": {
+          "name": "text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "posts_did_dids_did_fk": {
+          "name": "posts_did_dids_did_fk",
+          "tableFrom": "posts",
+          "tableTo": "dids",
+          "columnsFrom": [
+            "did"
+          ],
+          "columnsTo": [
+            "did"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "posts_did_rkey_pk": {
+          "columns": [
+            "did",
+            "rkey"
+          ],
+          "name": "posts_did_rkey_pk"
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}

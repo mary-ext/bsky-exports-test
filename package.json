@@ -1,0 +1,22 @@
+{
+  "name": "bsky-export",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "fmt": "prettier --cache --write .",
+    "db:generate": "drizzle-kit generate:sqlite"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "^0.20.13",
+    "prettier": "^3.2.4",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@externdefs/bluesky-client": "^0.3.10",
+    "@ipld/car": "^5.2.6",
+    "@ipld/dag-cbor": "^9.0.8",
+    "drizzle-orm": "^0.29.3",
+    "multiformats": "^13.0.1"
+  }
+}
